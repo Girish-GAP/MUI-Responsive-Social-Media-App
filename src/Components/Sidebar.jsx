@@ -9,9 +9,11 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 
-const Sidebar = () => {
+const Sidebar = ({setMode, mode}) => {
   return (
-    <Box flex={1} sx={{ display: { xs: "none", sm: "block", } }} >
+    <Box flex={1} p = {2} sx={{ display: { xs: "none", sm: "block", } }} >
+      {/* Directly applying above box position property acting like absolute */}
+      <Box  position='fixed'>   
       <List>
         <ListItem disablePadding>
           <ListItemButton component = "a" href = "#home">
@@ -72,10 +74,11 @@ const Sidebar = () => {
             <ListItemIcon>
               <DarkModeIcon />
             </ListItemIcon>
-            <Switch defaultChecked />
+            <Switch onChange={e=>setMode(mode === "light" ? "dark" : "light")} />
           </ListItemButton>
         </ListItem>
       </List>
+      </Box>
     </Box>
   )
 }
